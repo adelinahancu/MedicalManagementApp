@@ -1,0 +1,107 @@
+managed implementation in class ZBP_R_DOCTORS unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_DOCTORS alias Doctors
+persistent table ZDOCTORS
+extensible
+draft table ZDOCTORS_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+
+   field (numbering : managed ) DoctorId;
+
+
+  field ( readonly )
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt,
+   DoctorId;
+
+
+
+  association _Appointment{create;with draft;}
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZDOCTORS corresponding extensible
+  {
+    DoctorID = doctor_id;
+    FirstName = first_name;
+    LastName = last_name;
+    SpecializationID = specialization_id;
+    PhoneNumber = phone_number;
+    Email = email;
+    IsAtWork = is_at_work;
+    YearsExperience = years_experience;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+
+}
+
+define behavior for ZR_APPOINTMENTS alias Appointments
+persistent table zappointments
+draft table zappointments_d
+etag master LocalLastChangedAt
+lock dependent by _Doctor
+authorization dependent by _Doctor
+{
+
+  update;
+  delete;
+
+  field ( readonly ) AppointmentID, DoctorID,AppointmentEndTime;
+  field ( numbering : managed ) AppointmentID;
+  field ( mandatory : create ) PatientID, AppointmentDate, AppointmentStartTime;
+
+
+
+
+  association _Doctor { with draft; }
+  association _Patient;
+
+determination determineStatus on  modify {create;}
+
+determination validateAppointmentDate on modify {  field AppointmentDate; }
+determination validateWorkingHours on modify{field AppointmentStartTime;}
+determination calculateEndTime on modify{field AppointmentStartTime;}
+
+//determination setStatusToCompleted on save {create; update;}
+
+validation validateUniqueAppointmentTime on save { field AppointmentDate, AppointmentStartTime, DoctorID; }
+//determination createMedicalRecordsOnComplete on modify {field Status; }
+
+
+  mapping for zappointments
+  {
+    AppointmentID = appointment_id;
+    DoctorID = doctor_id;
+    PatientID = patient_id;
+    AppointmentDate = appointment_date;
+    AppointmentStartTime = appointment_start_time;
+    AppointmentEndTime = appointment_end_time;
+    Status = status;
+    Notes = notes;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}

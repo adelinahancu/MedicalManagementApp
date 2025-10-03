@@ -1,0 +1,18 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_DOCTORS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_DOCTORS'
+  }
+}
+define service ZUI_DOCTORS_O4
+  provider contracts odata_v4_ui {
+  expose ZC_DOCTORS;
+  expose ZR_SPECIALIZATIONS;
+  expose ZC_PATIENTS;
+  expose ZC_APPOINTMENTS;
+  expose ZR_PATIENTS_VH;
+  expose ZC_MEDICAL_RECORDS;
+  expose ZC_PATIENT_VISITS;
+}

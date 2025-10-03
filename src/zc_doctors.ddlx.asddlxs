@@ -1,0 +1,174 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Doctor`s details page',
+    typeNamePlural: 'Doctors',
+    title: {
+      type: #STANDARD,
+      value: 'FullName'
+      
+    },
+    description: {
+      type: #STANDARD,
+      value: 'SpecializationTitle'
+    }
+  }
+}
+
+annotate view ZC_DOCTORS with
+{
+  @EndUserText.label: 'DoctorID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  },
+  { 
+  id:'Appointments',
+  type:#LINEITEM_REFERENCE,
+  label:'Appointments',
+  position:20,
+  targetElement:'_Appointment'} ]
+  
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'DoctorID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'DoctorID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  DoctorID;
+  
+  @EndUserText.label: 'First Name'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'FirstName'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'FirstName'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  FirstName;
+  
+  @EndUserText.label: 'Last Name'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'LastName'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'LastName'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  LastName;
+  
+@EndUserText.label: 'Specialization'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Specialization'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Specialization'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  SpecializationID;  
+  
+ 
+ @EndUserText.label: 'Specialization Title'
+  SpecializationTitle;
+  
+  @EndUserText.label: 'Phone Number'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Phone Number'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Phone Number'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  PhoneNumber;
+  
+  @EndUserText.label: 'Email'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Email'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Email'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Email;
+  
+  @EndUserText.label: 'Is At Work?'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'IsAtWork'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'IsAtWork'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  IsAtWork;
+  
+  @EndUserText.label: 'Years Experience'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'YearsExperience'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'Years Experience'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  YearsExperience;
+  
+@UI.hidden: true
+  CreatedBy;
+  
+ @UI.hidden: true
+  CreatedAt;
+  
+ @UI.hidden: true
+  LocalLastChangedBy;
+  
+ @UI.hidden: true
+  LocalLastChangedAt;
+  
+ @UI.hidden: true
+  LastChangedAt;
+  
+@EndUserText.label: 'Appointments'
+  _Appointment;
+  
+
+
+ 
+  
+  
+}

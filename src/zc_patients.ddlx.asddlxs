@@ -1,0 +1,151 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'FullName'
+@UI.headerInfo.description.type: #STANDARD
+
+annotate view ZC_PATIENTS with
+{
+  @EndUserText.label: 'PatientID'
+  @UI.facet: [
+   {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ,
+  
+  {
+      id: 'VisitHistory',
+      type: #LINEITEM_REFERENCE,
+      label: 'Visit History',
+      position: 30,
+      targetElement: '_PatientVisits'
+    },
+    { 
+    id:'Appointments',
+    type:#LINEITEM_REFERENCE,
+    position:20,
+    label:'Medical Records',
+    targetElement:'_MedicalRecords'
+   }
+    ]
+  
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'PatientID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'PatientID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  PatientID;
+  
+  @EndUserText.label: 'FirstName'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'FirstName'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'FirstName'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  FirstName;
+  
+  @EndUserText.label: 'LastName'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'LastName'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'LastName'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  LastName;
+  
+  @EndUserText.label: 'PhoneNumber'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'PhoneNumber'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'PhoneNumber'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  PhoneNumber;
+  
+  @EndUserText.label: 'Email'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Email'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Email'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Email;
+  
+  @EndUserText.label: 'DateOfBirth'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'DateOfBirth'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'DateOfBirth'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  DateOfBirth;
+  
+  @EndUserText.label: 'HasAssurance'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'HasAssurance'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'HasAssurance'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  HasAssurance;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+ @UI.hidden: true
+  LastChangedAt;
+  
+  @EndUserText.label: 'Medical Records'
+  _MedicalRecords;
+  @EndUserText.label: 'Visits'
+  _PatientVisits;
+ 
+}

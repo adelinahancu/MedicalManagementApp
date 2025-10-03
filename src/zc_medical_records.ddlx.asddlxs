@@ -1,0 +1,113 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'RecordDate'
+annotate view ZC_MEDICAL_RECORDS with
+{
+  @EndUserText.label: 'RecordID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'RecordID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'RecordID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  RecordID;
+  
+  @EndUserText.label: 'Patient Name'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Patient Name'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Patient Name'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  PatientID;
+  
+  @EndUserText.label: 'Doctor Name'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Doctor Name'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Doctor Name'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  DoctorID;
+  
+  @EndUserText.label: 'Record Date'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Record Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Record Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  RecordDate;
+  
+  @EndUserText.label: 'Diagnosis'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Diagnosis'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Diagnosis'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Diagnosis;
+  
+  @EndUserText.label: 'Treatment'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Treatment'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Treatment'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Treatment;
+  
+ @UI.hidden: true
+  createdby;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+  
+ 
+}

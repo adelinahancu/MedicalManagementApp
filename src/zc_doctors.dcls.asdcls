@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_DOCTORS'
+@MappingRole: true
+define role ZC_DOCTORS {
+  grant select on ZC_DOCTORS;
+
+}

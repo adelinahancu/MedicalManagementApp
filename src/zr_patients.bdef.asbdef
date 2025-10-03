@@ -1,0 +1,134 @@
+managed implementation in class zbp_r_patients unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_PATIENTS alias Patients
+persistent table zpatients
+draft table ZPATIENTS_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly )
+    PatientID,
+    CreatedBy,
+    CreatedAt,
+    LocalLastChangedBy,
+    LocalLastChangedAt,
+    LastChangedAt;
+
+  field(numbering:managed) PatientID;
+
+  association _MedicalRecords {create;with draft;}
+  association _PatientVisits {create; with draft; }
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zpatients{
+
+  PatientID = patient_id;
+    FirstName = first_name;
+    LastName = last_name;
+    PhoneNumber = phone_number;
+    Email = email;
+    DateOfBirth = date_of_birth;
+    HasAssurance = has_assurance;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+}
+}
+
+define behavior for ZR_MEDICAL_RECORDS alias MedicalRecords
+persistent table ZMEDICAL_RECORDS
+draft table ZRECORDS_D
+etag master LocalLastChangedAt
+lock dependent by _Patient
+authorization dependent by _Patient
+{
+    field ( readonly ) RecordID, CreatedBy, CreatedAt, LocalLastChangedBy,
+                     LocalLastChangedAt, LastChangedAt,PatientID;
+  field ( mandatory : create ) DoctorID,RecordDate;
+  field ( mandatory ) Diagnosis, Treatment;
+  field(numbering : managed) RecordId;
+
+
+  update;
+  delete;
+
+  association _Patient{with draft;}
+  association _Doctor;
+
+
+ mapping for zmedical_records
+  {
+    RecordID = record_id;
+    PatientID = patient_id;
+    DoctorID = doctor_id;
+    RecordDate = record_date;
+    Diagnosis = diagnosis;
+    Treatment = treatment;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}
+
+define behavior for zr_patient_visits alias PatientVisits
+persistent table zappointments
+draft table zpatient_vis
+etag master LocalLastChangedAt
+lock dependent by _Patient
+authorization dependent by _Patient
+{
+update;
+delete;
+
+field ( readonly )
+   VisitID,
+   PatientID,
+   DoctorID,
+   VisitDate,
+   VisitStartTime,
+   VisitEndtTime,
+   Status,
+   VisitNotes,
+   FullName,
+   Title,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  association _Patient;
+
+  mapping for zappointments
+  {
+    VisitID = appointment_id;
+    PatientID = patient_id;
+    DoctorID = doctor_id;
+    VisitDate = appointment_date;
+    VisitStartTime = appointment_start_time;
+    VisitEndtTime = appointment_end_time;
+    Status = status;
+    VisitNotes = notes;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}

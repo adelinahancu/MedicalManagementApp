@@ -1,0 +1,154 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Appointment',
+    typeNamePlural: 'Appointments'
+  }
+}
+annotate view ZC_APPOINTMENTS with
+{
+  @EndUserText.label: 'AppointmentID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'AppointmentID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'AppointmentID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  AppointmentID;
+  
+  @EndUserText.label: 'PatientID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'PatientID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'PatientID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  PatientID;
+  
+  @EndUserText.label: 'DoctorID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'DoctorID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'DoctorID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  DoctorID;
+  
+  
+  @EndUserText.label: 'Appointment Date'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Appointment Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Appointment Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  AppointmentDate;
+  
+  
+ @EndUserText.label: 'Appointment Start Time'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Appointment Start Time'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Appointment Start Time'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+ 
+  AppointmentStartTime;
+  
+   @EndUserText.label: 'Appointment End Time'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'Appointment End Time'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'Appointment End Time'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+ 
+  AppointmentEndTime;
+  
+ @UI: {
+    lineItem: [
+      {
+        position: 80,
+        label: 'Status',
+        criticality: 'StatusCriticality' 
+      }
+    ],
+    identification: [
+      {
+        position: 80,
+        label: 'Status',
+        criticality: 'StatusCriticality'
+      }
+    ]
+  }
+  Status;
+  
+  @EndUserText.label: 'Notes'
+  @UI.identification: [ {
+    position: 90 , 
+    label: 'Notes'
+  } ]
+  @UI.lineItem: [ {
+    position: 90 , 
+    label: 'Notes'
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  Notes;
+  
+ @UI.hidden: true
+  CreatedBy;
+  
+   @UI.hidden: true
+  CreatedAt;
+  
+   @UI.hidden: true
+  LocalLastChangedBy;
+  
+   @UI.hidden: true
+  LocalLastChangedAt;
+  
+   @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  StatusCriticality;
+  
+}
